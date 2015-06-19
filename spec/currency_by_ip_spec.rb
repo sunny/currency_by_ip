@@ -1,11 +1,37 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe CurrencyByIp do
-  it 'has a version number' do
-    expect(CurrencyByIp::VERSION).not_to be nil
+  it "has a version number" do
+    expect(CurrencyByIp::VERSION).to match(/^\d+\.\d+\.\d+/)
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  context "find_by_ip" do
+    it "detects USD for Google's IP" do
+      expect(CurrencyByIp.find_by_ip("173.194.34.1")).to eq("USD")
+    end
+
+    it "detects EUR for Le Monde's IP" do
+      expect(CurrencyByIp.find_by_ip("195.154.120.129")).to eq("EUR")
+    end
+
+    it "detects GBP for BBC's IP" do
+      expect(CurrencyByIp.find_by_ip("212.58.244.18")).to eq("GBP")
+    end
+
+    it "returns nil if it cannot find it" do
+      expect(CurrencyByIp.find_by_ip("0.1.1.1")).to eq(nil)
+    end
+
+    it "accepts a geo_ip_path arg" do
+      path = "lib/../lib/currency_by_ip/GeoIP.dat"
+      result = CurrencyByIp.find_by_ip("1.2.3.4", geoip_data_path: path)
+      expect(result).to eq("USD")
+    end
+
+    it "raises an error if the geo_ip_path is wrong" do
+      expect do
+        CurrencyByIp.find_by_ip("1.2.3.4", geoip_data_path: "foo")
+      end.to raise_error(/No such file or directory/)
+    end
   end
 end

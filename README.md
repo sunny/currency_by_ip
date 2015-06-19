@@ -1,8 +1,7 @@
 # CurrencyByIp
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/currency_by_ip`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Guess the currency to show a user from his IP address. This uses GeoIP's IP
+database.
 
 ## Installation
 
@@ -16,24 +15,39 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
+## GeoIP
 
-    $ gem install currency_by_ip
+Please download an up-to-date decompressed `GeoIP.dat` from:
+http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+and place it somewhere in your app, like `lib/geo/GeoIP.dat`.
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+CurrencyByIp.find_by_ip("173.194.34.1",
+                        geoip_data_path: "lib/geo/GeoIP.dat") # => "USD"
+```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then,
+run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+To install this gem onto your local machine, run `bundle exec rake install`.
+To release a new version, update the version number in `version.rb`, and then
+run `bundle exec rake release` to create a git tag for the version, push git
+commits and tags, and push the `.gem` file to
+[rubygems.org](https://rubygems.org).
+
+Run the specs with:
+
+    $ bundle exec rspec
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/currency_by_ip/fork )
+1. Fork it ( https://github.com/sunny/currency_by_ip/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+6. Dance
