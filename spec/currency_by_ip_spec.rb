@@ -33,5 +33,28 @@ describe CurrencyByIp do
         CurrencyByIp.find_by_ip("1.2.3.4", geoip_data_path: "foo")
       end.to raise_error(/No such file or directory/)
     end
+
+    it "accepts a geoip arg" do
+      country = double :country, country_code2: "US"
+      geoip = double :geoip, country: country
+
+      result = CurrencyByIp.find_by_ip("1.2.3.4", geoip: geoip)
+      expect(result).to eq("USD")
+    end
+  end
+
+  context "find_by_country_code" do
+    it "detects USD for USA" do
+      expect(CurrencyByIp.find_by_country_code("US")).to eq("USD")
+    end
+
+    it "detects EUR for France" do
+      expect(CurrencyByIp.find_by_country_code("FR")).to eq("EUR")
+    end
+
+    it "returns nil if it cannot find it" do
+      expect(CurrencyByIp.find_by_country_code("")).to eq(nil)
+      expect(CurrencyByIp.find_by_country_code(nil)).to eq(nil)
+    end
   end
 end
