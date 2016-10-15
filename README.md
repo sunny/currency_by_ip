@@ -5,10 +5,11 @@ database.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the following lines to your application's Gemfile:
 
 ```ruby
-gem 'currency_by_ip'
+# Detect the currency from an IP address
+gem "currency_by_ip"
 ```
 
 And then execute:
