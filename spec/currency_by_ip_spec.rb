@@ -18,6 +18,10 @@ describe CurrencyByIp do
       expect(CurrencyByIp.find_by_ip("212.58.244.18")).to eq("GBP")
     end
 
+    it 'detects EUR for IP in the "EU" country code' do
+      expect(CurrencyByIp.find_by_ip("141.101.80.42")).to eq("EUR")
+    end
+
     it "returns nil if it cannot find it" do
       expect(CurrencyByIp.find_by_ip("0.1.1.1")).to eq(nil)
     end

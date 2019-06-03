@@ -1,7 +1,9 @@
 module CurrencyByIp
-  # ISO2 country codes to country currency codes
-  # via http://country.io/data/
   COUNTRY_TO_CURRENCY= {
+    "EU" => "EUR",
+
+    # ISO2 country codes to country currency codes
+    # via http://country.io/data/
     "AD" => "EUR",
     "AE" => "AED",
     "AF" => "AFN",
