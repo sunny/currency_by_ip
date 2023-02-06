@@ -20,9 +20,9 @@ $ bundle
 
 ## GeoIP
 
-Download an up-to-date decompressed GeoIP dat file from maxmind.com
-https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
-and place it somewhere in your app, like `config/geo_lite_2.dat`.
+Download an up-to-date decompressed GeoIP `.dat` file from
+https://www.miyuru.lk/geoiplegacy and place it somewhere in your app,
+like `config/geo_lite_2.dat`.
 
 ## Usage
 
