@@ -20,16 +20,16 @@ $ bundle
 
 ## GeoIP
 
-Download an up-to-date decompressed `GeoIP.dat` from:
-http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
-and place it somewhere in your app, like `lib/geo/GeoIP.dat`.
+Download an up-to-date decompressed GeoIP dat file from maxmind.com
+https://dev.maxmind.com/geoip/geolite2-free-geolocation-data
+and place it somewhere in your app, like `config/geo_lite_2.dat`.
 
 ## Usage
 
 ```ruby
 CurrencyByIp.find_by_ip(
   "173.194.34.1",
-  geoip_data_path: "lib/geo/GeoIP.dat",
+  geoip_data_path: "config/geo_lite_2.dat",
 ) # => "USD"
 ```
 
