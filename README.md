@@ -20,7 +20,7 @@ $ bundle
 
 ## GeoIP
 
-Download an up-to-date decompressed GeoIP `.dat` file from
+Download an up-to-date decompressed GeoIP country `.dat` file from
 https://www.miyuru.lk/geoiplegacy and place it somewhere in your app,
 like `config/geo_lite_2.dat`.
 
